@@ -1,0 +1,19 @@
+char* reverse(char *S, int len)
+{
+    stack<char>st;
+    for(int i=0;i<len;i++)
+    {
+        st.push(S[i]);
+    }
+    //now make a new character array to store the answer which is a reversed string
+    char* a=new char[len];
+     int i=0;
+    while(!st.empty())
+    {
+        a[i++]=st.top();
+        st.pop();
+    }
+    //in a character array it is important to add a NULL character at the end of array for marking completion of the character array
+    a[i]='\0';
+    return a;
+}

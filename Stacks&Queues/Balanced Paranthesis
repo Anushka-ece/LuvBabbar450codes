@@ -1,0 +1,48 @@
+class Solution
+{
+    public:
+    //Function to check if brackets are balanced or not.
+    bool ispar(string x)
+    {
+        stack<char>s;
+        char c;
+        int i;
+        for(i=0;i<x.size();i++)
+        {
+            if(x[i]=='(' || x[i]=='[' || x[i]=='{')
+            {
+                s.push(x[i]);
+                continue;
+            }
+        }
+        //if current character is not opening bracket then it should be closing but if it is emoty then not valid
+        if(s.empty())
+        return false;
+        switch(x[i])
+        {
+            case '(':
+            c=s.top();
+            s.pop();
+            if(c=='}' || c==']')
+            return false;
+            break;
+            
+              case '[':
+            c=s.top();
+            s.pop();
+            if(c=='}' || c==')')
+            return false;
+            break;
+            
+              case '{':
+            c=s.top();
+            s.pop();
+            if(c==')' || c==']')
+            return false;
+            break;
+        }
+        //after this step we have already checked all the opening and closing brackets,now stack should be empty,but if it is not so then there is some error 
+        return (s.empty());
+    }
+
+};

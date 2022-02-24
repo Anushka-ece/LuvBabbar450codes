@@ -1,0 +1,32 @@
+class Solution
+{
+    public:
+    //Function to return the level order traversal of a tree.
+    vector<int> levelOrder(Node* root)
+    {
+      vector<int>ans;
+      if(!root)
+      return ans;
+      queue<Node*>q;//as we are inserting nodes here so we are taking node data type here
+      q.push(root);//now firstly we will insert first node here i.e. root node
+      
+      //now we will run this loop till the time queue doesn't gets empty
+      while(!q.empty())
+      {
+          Node* t=q.front();
+          ans.push_back(t->data);//we are putting data of node popped out from q in the ans vector
+          
+          //Now we will check that in case if left node of current node i.e  t is existing,then firstly we will push that left node into queue
+          if(t->left)
+          q.push(t->left);//we are pushing nodes in queue and their respective data in ans vector
+          
+          //same logic as above applies for right side node of t
+          if(t->right)
+          q.push(t->right);
+          
+          //After performing all the steps on the current element,i.e.pushing it's value in ans vector and finding out it's left and right node values and putting them in queue,we will now pop that particular current element from queue
+          q.pop();
+      }
+      return ans;
+    }
+};

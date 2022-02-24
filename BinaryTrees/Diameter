@@ -1,0 +1,44 @@
+class Solution
+{
+    public:
+    
+    int calcHeight(Node* root)
+{
+    if(root==NULL)
+return 0;
+    int lheight=calcHeight(root->left);
+    int rheight=calcHeight(root->right);
+    return (max(lheight,rheight)+1);
+}
+   
+   
+    int diameter(Node* root)
+    {if(root==NULL)
+    return 0;
+    int lheight=calcHeight(root->left);
+    int rheight=calcHeight(root->right);
+    int currdiameter=lheight+rheight+1;
+
+    int ldiameter=diameter(root->left);
+    int rdiameter=diameter(root->right);
+     return max(max(ldiameter,rdiameter),currdiameter);
+    
+    }
+
+};
+
+// { Driver Code Starts.
+
+/* Driver program to test size function*/
+int main() {
+    int t;
+    scanf("%d\n", &t);
+    while (t--) {
+        string s;
+        getline(cin, s);
+        Node* root = buildTree(s);
+        Solution ob;
+        cout << ob.diameter(root) << endl;
+    }
+    return 0;
+}

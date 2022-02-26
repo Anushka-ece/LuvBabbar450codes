@@ -1,0 +1,25 @@
+class Solution
+{
+    public:
+    //Function to return the lowest common ancestor in a Binary Tree.
+    Node* lca(Node* root ,int n1 ,int n2 )
+    {
+        //this means that in case if nothing exists
+      if(!root)
+      return NULL;
+      //now root will be returned if it's value id equal to n1 or n2
+      if(root->data==n1 || root->data==n2)
+      return root;
+      //now check in left and right directions
+      Node* l=lca(root->left,n1,n2);
+      Node* r=lca(root->right,n1,n2);
+      //this means that if values exist in both of the left hand side and right hand side then we will return node
+      if(l && r)
+      return root;
+      //if only left subtree exists
+      if(l)
+      return l;
+      else
+      return r;
+    }
+};

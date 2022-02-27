@@ -1,0 +1,76 @@
+#include<bits/stdc++.h>
+using namespace std;
+//First step is to make a binary tree using given array
+//now we will notice that in thi sbinary tree while doing heapify operation,all the leaf nodes are already heapified
+//Therefore,we will start heapifying from the second last level of nodes in binary tree
+//Now we will move one level up,now at this stage our aim is to check that all the elements below this particular node,are smaller than that
+//But if it is not so ,then values will be swapped with each other so that value of data in parent node is greater than value of data in child node
+
+
+void heapify(int arr[],int n,int i)
+{
+    int largest=i;//initialize largest element as the one which is present at root
+    int left=2*i+1;
+    int right=2*i+2;
+    //if left child is larger than largest element
+    if(arr[left]>arr[largest] && left<n)
+    {
+        largest=left;
+    }
+    if(arr[right]>arr[largest] && right<n)
+    {
+        largest=right;
+    }
+    //if largest is not root
+    if(largest!=i)
+    {
+        swap(arr[i],arr[largest]);
+        //recursively heapify the affected subtree
+        heapify(arr,n,largest);
+    }
+}
+/*Last non-leaf node = parent of last-node.
+or, Last non-leaf node = parent of node at (n-1)th index.
+or, Last non-leaf node = Node at index ((n-1) - 1)/2.
+                       = (n/2) - 1.*/
+void buildheap(int arr[],int n)
+{
+    //to optimize our code we will start from second last Node
+    int startindex=n/2-1;
+    //now perform reverse level order traversal starting from last non leaf node and heapify each node
+    for(int i=startindex;i>=0;i--)
+    {
+        heapify(arr,n,i);
+    }
+}
+
+void printheap(int arr[],int n)
+{
+    cout<<"heap data structure is:";
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
+
+int main()
+{
+    int n;
+    cin>>n;
+    int arr[n];
+   for(int i=0;i<n;i++)
+   {
+       cin>>arr[i];
+   }
+   //function used to build a heap using given array
+   buildheap(arr,n);
+   //function used to print the formed maxheap
+   printheap(arr,n);
+    return 0;
+}
+
+
+
+/*Time Complexity: Time complexity of heapify is O(Logn). Time complexity of createAndBuildHeap() is O(n) and the overall time complexity of Heap Sort is O(nLogn).
+Space Complexity:o(1) as it is an inplace algorithm*/

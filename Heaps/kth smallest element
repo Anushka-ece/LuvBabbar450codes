@@ -1,0 +1,14 @@
+//METHOD 1 :USING SIMPLE SORTING
+//O(NLOGN)
+
+  int kthSmallest(int arr[], int l, int r, int k)
+  {
+  int n=r-l+1;
+       sort(arr,arr+n);
+       return arr[k-1];
+    }
+    
+    
+//METHOD 2:
+    
+    

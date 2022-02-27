@@ -1,0 +1,54 @@
+//METHOD1:USING SIMPLE SORTING AND THEN RETURNING OF ELEMENTS
+
+
+
+//METHOD2:USING MAXHEAP
+//T.C:O(LOGN)
+
+
+
+class Solution{
+    public:
+void heapify(vector<int>&arr,int total,int i)
+{
+    int largest=i;//initialize largest element as the one which is present at root
+    int left=2*i+1;
+    int right=2*i+2;
+    //if left child is larger than largest element
+    if(arr[left]>arr[largest] && left<total)
+    {
+        largest=left;
+    }
+    if(arr[right]>arr[largest] && right<total)
+    {
+        largest=right;
+    }
+    //if largest is not root
+    if(largest!=i)
+    {
+        swap(arr[i],arr[largest]);
+        //recursively heapify the affected subtree
+        heapify(arr,total,largest);
+    }
+    
+}
+    void buildheap(vector<int>&arr,int total)
+{
+    //to optimize our code we will start from second last Node
+    int startindex=total/2-1;
+    //now perform reverse level order traversal starting from last non leaf node and heapify each node
+    for(int i=startindex;i>=0;i--)
+    {
+        heapify(arr,total,i);
+    }
+}
+    vector<int> mergeHeaps(vector<int> &a, vector<int> &b, int n, int m) {
+        vector<int>ans;
+        for(auto x:a)
+        ans.push_back(x);
+        for(auto y:b)
+        ans.push_back(y);
+        buildheap(ans,n+m);
+        return ans;
+    }
+};

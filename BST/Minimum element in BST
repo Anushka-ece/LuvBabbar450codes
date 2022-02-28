@@ -1,0 +1,12 @@
+int minValue(Node* root) {
+    if(!root)
+    return -1;
+    struct Node* x=root;
+    while(x->left!=NULL)
+    {
+        x=x->left;
+    }
+   return (x->data);
+}
+/*Time Complexity: O(n) Worst case happens for left skewed trees.
+Similarly we can get the maximum value by recursively traversing the right node of a binary search tree.*/

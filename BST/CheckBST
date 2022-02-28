@@ -1,0 +1,22 @@
+vector<int>nodes;
+    void traverse(Node* root)
+    {
+        if(root!=NULL)
+        {traverse(root->left);
+        nodes.push_back(root->data);
+        traverse(root->right
+        );
+        
+    }
+    }
+    bool isBST(Node* root) 
+    {
+        //get a function to store all the nodes in an array names nodes
+        traverse(root);
+        for(int i=1;i<nodes.size();i++)
+        {
+            if(nodes[i]<=nodes[i-1])
+            return false;
+        }
+        return true;
+    }

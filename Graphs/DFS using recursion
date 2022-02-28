@@ -1,0 +1,25 @@
+vector<int> bfsOfGraph(int V, vector<int> adj[]) {
+        //V is the number of nodes given over here
+        //graph is stored here in the form of an adjacency list
+        vector<int>v;
+        queue<int>q;
+        q.push(0);//as we have to start from 0 therrefore,0 is pushed firstly
+        vector<int>visited(V,0);//V is the total number of nodes here and intially,all marked as false i.e not visited
+        //now in beginning mark first element as true in visited vector
+        visited[0]=1;
+        while(!q.empty())
+        {
+            int td=q.front();
+            q.pop();
+            v.push_back(td);//the node that has been traversed is pushed now in array at this stage
+            //now satrt traversing adjacency list and if any node is not visited then push it into queue
+            for(auto x:adj[td])//we are taking td here,as supppose initially td is 0 and suppose elements connected to it and at next level are 1,2,3 .Therefore,it will traverse now 1,2,3
+            {
+                if(!visited[x])
+              {  visited[x]=1;
+                q.push(x);}
+                
+            }
+        }
+        return v;
+    }

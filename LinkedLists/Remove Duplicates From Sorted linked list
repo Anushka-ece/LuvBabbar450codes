@@ -1,0 +1,24 @@
+//Function to remove duplicates from sorted linked list.
+//Expected Time Complexity : O(N)
+//Expected Auxilliary Space : O(1)
+Node *removeDuplicates(Node *head)
+{
+ Node* currptr=head;
+ Node* nextptr;
+ if(currptr==NULL)
+ return NULL;
+ while(currptr->next!=NULL)
+ {
+     if(currptr->data==currptr->next->data)
+     {
+         nextptr=currptr->next->next;
+         delete(currptr->next);
+         currptr->next=nextptr;
+     }
+     else
+     {
+         currptr=currptr->next;
+     }
+ }
+ return head;
+}

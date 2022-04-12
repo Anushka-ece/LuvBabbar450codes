@@ -1,1 +1,15 @@
-
+bool isCircular(struct Node *head){
+    //base case
+    //an empty linked list is circular
+    if(head==NULL)
+    return true;
+    struct Node* n=head;
+    //node present next to the head
+    n=n->next;
+    //this loop will stop in both the cases,even when there is not a loop and even when there will be a loop if next of head become equal to NULL
+    while(n!=NULL && n!=head)
+    {
+        n=n->next;
+    }
+    return (n==head);
+}

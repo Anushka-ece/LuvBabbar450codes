@@ -1,0 +1,43 @@
+#includebits/stdc++.h>
+using namespace std;
+void swap(int a[],int x,int y)
+{
+    int temp=a[x];
+    a[x]=a[y];
+    a[y]=temp;
+}
+void movenegtoleft(int a[],int n)
+{
+    int f=0;
+    int s=0;
+    for(int i=0;i<n;i++)
+    {
+        if(a[s]>=0)
+        s++;
+        else
+        {
+            swap(a,s,f);
+            f++;
+            s++;
+        }
+    }
+    
+}
+int main()
+{
+    int n;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    movenegtoleft(a,n);
+    for(int i=0;i<n;i++)
+    {
+        cout<<a[i]<<" ";
+    }
+    return 0;
+}
+Time Complexity: O(N)
+Auxiliary Space: O(1)

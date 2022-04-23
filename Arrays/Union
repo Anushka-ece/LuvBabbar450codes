@@ -1,0 +1,23 @@
+Expected Time Complexity : O((n+m)log(n+m))
+Expected Auxilliary Space : O(n+m)
+lass Solution{
+    public:
+    //Function to return the count of number of elements in union of two arrays.
+    int doUnion(int a[], int n, int b[], int m)  {
+        //code here
+        set<int>s;
+        for(int i=0;i<n;i++)
+        {
+            s.insert(a[i]);
+        }
+        for(int j=0;j<m;j++)
+        {
+            if(s.find(b[j])!=s.end())
+            continue;
+            else
+            s.insert(b[j]);
+        }
+        return s.size();
+    }
+};
+

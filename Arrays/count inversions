@@ -1,0 +1,16 @@
+//brute force method
+/TC=O(N*N)
+//SC=O(1)
+  long long int inversionCount(long long arr[], long long N)
+    {
+       long long int count=0,i,j;
+       for( i=0;i<N-1;i++)
+       {
+           for(j=i+1;j<N;j++)
+           {
+               if(arr[i]>arr[j])
+               count++;
+           }
+       }
+       return count;
+    }
